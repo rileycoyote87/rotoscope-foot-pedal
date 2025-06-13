@@ -1,0 +1,1 @@
+Using AutoHotInterception a usb foot pedal (keyboard emulation) particular device ID is intercepted and a macro of 10x Page Down or 10x Page Up (double tap) is used for forward 10 frames or backwards 10 frames in After Effects for easy rotoscoping
