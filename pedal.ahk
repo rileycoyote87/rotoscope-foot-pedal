@@ -19,7 +19,7 @@ ClearToolTip() {
 }
 
 lastTapTime := 0
-doubleTapThreshold := 400  ; ms
+doubleTapThreshold := 1000  ; ms
 tapCount := 0
 
 #HotIf cm.IsActive
@@ -38,12 +38,9 @@ tapCount := 0
     lastTapTime := currentTime
 
     if (tapCount = 2) {
-        ToolTip("Double tap detected! Sending PageUp x10")
+        ToolTip("Double tap detected! Sending Shift + PageUp")
         SetTimer(ClearToolTip, -1000)
-        Loop 10 {
-            Send("{PgUp}")
-            Sleep 50
-        }
+        Send("+{PgUp}")  ; Shift + PageUp
         tapCount := 0  ; reset after double tap
     } else {
         ; Delay the single tap action to confirm it’s not a double tap
@@ -55,11 +52,8 @@ tapCount := 0
 HandleSingleTap() {
     global tapCount
     if (tapCount = 1) {
-        ToolTip("Single tap! Sending PageDown x10")
-        Loop 10 {
-            Send("{PgDn}")
-            Sleep 50
-        }
+        ToolTip("Single tap! Sending Shift + PageDown")
+        Send("+{PgDn}")  ; Shift + PageDown
     }
     tapCount := 0
     SetTimer(ClearToolTip, -1000)
